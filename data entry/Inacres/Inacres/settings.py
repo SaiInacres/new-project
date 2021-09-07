@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1^6$==0c^)g_72wa-ie=@(l#_d(1w)67-!6myxmb*4ibr4r!kt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'inacresdatabase.org', ".inacresdatabase.org"]
+ALLOWED_HOSTS = ['127.0.0.1', 'inacresdatabase.org', ".inacresdatabase.org", '143.110.176.246']
 
 
 # Application definition
@@ -91,12 +91,24 @@ WSGI_APPLICATION = 'Inacres.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-DATABASES = {
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'inacresdb',
+            'USER': 'postgres',
+            'PASSWORD': 'phani@1997',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'inacresdb',
-        'USER': 'postgres',
-        'PASSWORD': 'phani@1997',
+        'NAME': 'myproject',
+        'USER': 'inacres',
+        'PASSWORD': 'inacresdb',
         'HOST': 'localhost',
         'PORT': '',
     }
