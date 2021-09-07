@@ -1,0 +1,88 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Documents Registration{% endblock %}
+{% block content %}
+
+</br>
+<div class='container'>
+{% if messages %}
+<div class= 'row'>
+{% for message in messages %}
+<div class='col-md-6 col-md-offset-3'> 
+<div {% if message.tags %} class='alert alert-{{ message.tags }}' role='alert' {% endif %}> {{ message }} </div></div>
+{% endfor %}
+</div>
+{% endif %}</br>
+<div class='row'>
+<div class='container col-md-6 border border-2 border-success rounded-3'></br></br>
+<h3 class='text-success text-center'><b>New Plot User Registration Form</b></h3>
+<form method='POST' action="{% url 'app:documentregister' %}" id="DocumentForm" data-plotnos-url="{% url 'app:ajax_load_plot_no' %}" enctype="multipart/form-data"  >
+{% csrf_token %}
+<b>{{ form|crispy }}</b>
+<!--
+<div class="form-group">
+    <label for="id_project_name"><b>Project Name:</b></label>
+    <input type="text" name="project_name" class="form-control" id="id_project_name" placeholder="Enter Project Name" required>
+  </div>
+  <div class="form-group">
+    <label for="id_plot_no"><b>Plot Number:</b></label>
+    <input type="text" name="plot_no" class="form-control" id="id_plot_no" placeholder="Enter Plot Number" required>
+  </div>
+  <div class="form-group">
+    <label for="id_katha_no"><b>Katha Number:</b></label>
+    <input type="text" name="katha_no" class="form-control" id="id_katha_no" placeholder="Enter Katha Number" required>
+  </div>
+  <div class="form-group">
+    <label for="id_new_passbook_no"><b>New Passbook Number:</b></label>
+    <input type="text" name="title" class="form-control" id="id_new_passbook_no" placeholder="Enter Passbook Number" required>
+  </div>
+  <div class="form-group">
+    <label for="id_aadhar_no"><b>Aadhar Number:</b></label>
+    <input type="text" name="aadhar_no" class="form-control" id="id_aadhar_no" placeholder="Enter Aadhar Number" required>
+  </div>
+  <div class="form-group">
+    <label for="id_extent_document_no"><b>Extent Document Number:</b></label>
+    <input type="text" name="extent_document_no" class="form-control" id="id_extent_document_no" placeholder="Enter Extent Document Number" required>
+  </div>
+  <div class="form-group">
+    <label for="id_aadhar_photo"><b>Aadhar Photo:</b></label>
+    <input type="file" name="aadhar-photo" class="form-control" id="id_aadhar_photo" placeholder="Upload Aadhar Photo" required>
+  </div>
+  <div class="form-group">
+    <label for="id_passbook_photo"><b>Passbook Photo:</b></label>
+    <input type="file" name="passbook_photo" class="form-control" id="id_passbook_photo" placeholder="Upload Passbook Photo" required>
+  </div>
+  <div class="form-group">
+    <label for="id_document_photos"><b>Document Photos:</b></label>
+    <input type="file" name="document_photos" class="form-control" multiple id="id_document_photos" placeholder="Upload documents" required>
+  </div>
+  <div class="form-group">
+    <label for="id_Note">Note</label>
+    <textarea name="Note" class="form-control" rows='4' cols='50' id="id_Note" placeholder="Enter Note" required></textarea>
+  </div>
+  ---->
+<button class="btn btn-success text-warning" type="submit"><b>Submit</b></button>
+<a href= '{% url 'app:sites' %}' type="button" class="btn btn-success text-warning" ><b>Go Back</b></a>
+</form>
+</br>
+</br></div></div></br></div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <script>
+    $("#id_project_name").change(function () {
+      var url = $("#DocumentForm").attr("data-plotnos-url");  // get the url of the `load_cities` view
+      var projectId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'projectId': projectId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_plot_no").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+{% endblock %}

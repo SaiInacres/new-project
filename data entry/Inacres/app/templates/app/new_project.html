@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Project Registration{% endblock %}
+{% block content %}
+
+<div class='container'>
+</br></br>
+<div class='row'>
+<div class='container col-md-6 border border-2 border-success rounded-3'></br></br>
+<h3 class='text-success text-center'><b>New Project Registration Form</b></h3>
+<form method='POST'>
+{% csrf_token %}
+<b>{{ form|crispy }}</b>
+<button class="btn btn-success text-white" type="submit">Submit</button>
+<a href= '{% url 'app:sites' %}' type="button" class="btn btn-success text-white" >Go Back</a></br>
+</form></br></div></div></br></div>
+{% endblock %}

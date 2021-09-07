@@ -1,0 +1,81 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Sites{% endblock %}
+{% block content %}
+
+<style>
+.col {
+    width: auto;
+    height: 250px;
+  }
+  /*
+ .page-footer {
+  background : url(http://pngimagesfree.com/NATURE/Grass/Bottom_grass_png_clipart.png) no-repeat;
+  */
+}
+</style>
+<div class="container text-center">
+
+</br>
+<form method='GET' action='{% url 'app:search' %}'>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1"><i class="bi bi-search" aria-hidden="true"></i></span>
+  <input type="text" class="form-control" placeholder="Search by name, plot no, project name, mail, phone etc..," name='q' aria-label="Search" aria-describedby="basic-addon1">
+</div>
+</form>
+    <p class='text-start text-success'>* Please note that This Project involves two steps of Registration to Complete plot registration details.</br>
+    * Step 1: This step contains Project Name, Plot No, Survey No, User Name, Phone No, Email ID and Address details etc...</br>
+    * Step 2: Step 2 includes Katha No, Passbook no, Extent Details, Document No, Aadhar No, Passport size photo of Member, Passbook scan copy, Document Scan copies etc..</br>
+    </p>
+</br>
+<a href= '{% url 'app:registration' %}' type="button" class="btn btn-warning text-success" ><b> Step 1: Plot Registration </b></a>&nbsp&nbsp</br></br>
+<a href= '{% url 'app:documentregister' %}' type="button" class="btn btn-warning text-success" ><b> Step 2: Plot Registration </b></a>&nbsp&nbsp</br></br>
+{% if user.is_superuser %}
+<a href= '{% url 'app:newproject' %}' type="button" class="btn btn-warning text-success" ><b> Click Here to Register New Project </b></a></br></br>
+{% endif %}
+<!--
+{% for project in query %}
+  <div class="row">
+    <div class="col text-center">
+      <a href='{% url 'app:userdetailsvikarabad' %}'><img src='{% static 'app/img/newlogo.png' %}' class='img-fluid '></br>
+      <b><h3 class='text-success'>{{ project.project_name }}</h3></b></a>
+    </div>
+    </br>
+  </div>
+{% endfor %}  
+-->
+
+  <div class="row">
+    <div class="col text-center">
+      <a href='{% url 'app:userdetailsvikarabad' %}'><img src='{% static 'app/img/newlogo.png' %}' class='img-fluid' alt='inacres image'></br>
+      <b><h3 class='text-success'>VIKARABAD CSA</h3></b></a>
+    </div>
+    </br>
+    <div class="col text-center">
+      <a href='{% url 'app:userdetailsaleru' %}'><img src='{% static 'app/img/newlogo.png' %}' class='img-fluid' alt='inacres image'></br>
+      <b><h3 class='text-success'>ALERU CSA</h3></b></a>
+    </div>
+    </br>
+    <div class="col text-center">
+      <a href='{% url 'app:userdetailsshadnagar' %}'><img src='{% static 'app/img/newlogo.png' %}' class='img-fluid' alt='inacres image'></br>
+      <b><h3 class='text-success'>SHADNAGAR CSA</h3></b></a>
+    </div>
+    </br>
+    <div class="col text-center">
+      <a href='{% url 'app:userdetailsbhuthpur' %}'><img src='{% static 'app/img/newlogo.png' %}' class='img-fluid' alt='inacres image'></br>
+      <b><h3 class='text-success'>BHUTHPUR CSA</h3></b></a>
+    </div>
+    </br>
+    <div class="col text-center">
+      <a href='{% url 'app:userdetailsmaddur' %}'><img src='{% static 'app/img/newlogo.png' %}' class='img-fluid' alt='inacres image'></br>
+      <b><h3 class='text-success'>MADDUR CSA</h3></b></a>
+    </div>
+    </br>
+  
+  </div>
+
+
+
+
+{% endblock %}

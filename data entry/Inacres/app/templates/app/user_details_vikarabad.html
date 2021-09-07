@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title %}Vikarabad CSA{% endblock %}
+{% block content %}
+
+{% for project in query %}
+  <div class="row">
+    <div class="col text-center">
+      </br>
+      <b><h3 class='text-success'>{{project.project_name.project_name}}</h3></b>
+    </div>
+    </br>
+  </div>
+{% endfor %}</br>
+<div class='container table-responsive'>
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Survey Number</th>
+      <th scope="col">Plot Number</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Mail Id</th>
+      <th scope="col">Phone Number</th>
+      <th scope='col'>Details</th>
+    </tr>
+  </thead>
+  {% for project in query %}
+  <tbody>
+    <tr>
+      <th scope="row">{{project.plot_no.survey_no}}</th>
+      <td>{{project.plot_no.plot_no}}</td>
+      <td>{{project.plot_no.first_name}}</td>
+      <td>{{project.plot_no.last_name}}</td>
+      <td>{{project.plot_no.mail_id}}</td>
+      <td>{{project.plot_no.mobile_no}}</td>
+      <td><a href="{% url 'app:details'  pk=project.pk %}"><i class="bi bi-eye btn btn-primary" aria-hidden="true"></i> </a></td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+ </div>
+{% endblock %}

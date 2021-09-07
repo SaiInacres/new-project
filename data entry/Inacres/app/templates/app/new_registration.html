@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}User Plot Registration{% endblock %}
+{% block content %}
+</br>
+<div class='container'>
+{% if messages %}
+<div class= 'row'>
+{% for message in messages %}
+<div class='col-md-6 col-md-offset-3'> 
+<div {% if message.tags %} class='alert alert-{{ message.tags }}' role='alert' {% endif %}> {{ message }} </div></div>
+{% endfor %}
+</div>
+{% endif %}</br>
+<div class='row'>
+<div class='container col-md-6 border border-2 border-success rounded-3'></br></br>
+<h3 class='text-success text-center'><b>New Plot User Registration Form</b></h3>
+<form method='POST'>
+{% csrf_token %}
+<b>{{ form|crispy }}</b>
+<button class="btn btn-success text-warning" type="submit"><b>Submit</b></button>
+<a href= '{% url 'app:sites' %}' type="button" class="btn btn-success text-warning" ><b>Go Back</b></a>
+</form>
+</br>
+</br></div></div></br></div>
+{% endblock %}

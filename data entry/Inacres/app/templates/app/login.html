@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style>
+.images{
+    /* background: url(https://wallpaperaccess.com/full/2330483.jpg);*/
+    background : url(https://c0.wallpaperflare.com/preview/582/995/748/india-tamil-nadu-village-nature.jpg) no-repeat center center fixed;
+    height : 500px;
+    
+}
+
+</style>
+</br>
+<div class='container'>
+
+{% if messages %}
+<div class= 'row'>
+{% for message in messages %}
+<div class='col-md-6 col-md-offset-3'> 
+<div {% if message.tags %} class='alert alert-{{ message.tags }}' role='alert' {% endif %}> {{ message }} </div></div>
+{% endfor %}
+</div>
+
+{% endif %}
+<div class='row images'>
+<div class='container col-md-4 border border-2 border-success rounded-3'></br></br>
+<b><h5 class='text-success'>Welcome to Inacres Admin Login</h5></b></br>
+<form method="POST">
+{% csrf_token %}
+<b>{{ form|crispy }}</b>
+<button class="btn btn-warning text-success" type="submit"><b> Login </b></button>
+<a href='{% url 'app:index' %}' type="button" class="btn btn-warning text-success" ><b> Go to HomePage </b></a>
+</form></br></br>
+</div></div>
+</div>
+{% endblock %}
