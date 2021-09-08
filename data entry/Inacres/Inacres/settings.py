@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-1^6$==0c^)g_72wa-ie=@(l#_d(1w)67-!6myxmb*4ibr4r!kt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'inacresdatabase.org', ".inacresdatabase.org", '143.110.176.246']
+ALLOWED_HOSTS = ['inacresdatabase.org', ".inacresdatabase.org", '143.110.176.246']
 
 
 # Application definition
