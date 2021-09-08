@@ -174,6 +174,7 @@ def document_register(request):
             pass_photo = form.cleaned_data.get('pass_photo')
             passbook_photo = form.cleaned_data.get('passbook_photo')
             Note = form.cleaned_data.get('Note')
+            """
             object =Document_details.objects.create(
 
                 project_name=project_name,
@@ -188,6 +189,23 @@ def document_register(request):
             )
             for i in images:
                 PostImage.objects.create(post=object, document_photos=i)
+                """
+
+            object = Document_details(
+                project_name=project_name,
+                plot_no=plot_no,
+                katha_no=katha_no,
+                new_passbook_no=new_passbook_no,                  
+                document_no=document_no,
+                aadhar_no=aadhar_no,
+                pass_photo=pass_photo,
+                passbook_photo=passbook_photo,
+                Note=Note,
+            )
+            object.save()
+            for i in images:
+                data = PostImage(post=object, document_photos=i)
+                data.save()
             messages.success(request, 'Thank you! Plot Account Was Successfully Created.',
                              extra_tags='alert alert-success')           
         else:
