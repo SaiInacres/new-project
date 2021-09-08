@@ -54,4 +54,4 @@ class PostImage(models.Model):
     document_photos = models.FileField(upload_to = 'app/')
  
     def __str__(self):
-        return self.post.plot_no
+        return str(self.post.plot_no)
