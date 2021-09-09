@@ -8,7 +8,7 @@
    background: url({% static 'app/img/farm-09.jpg' %});
     background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding: 100px;
+  padding: 250px;
     
 }
 </style>
@@ -19,7 +19,7 @@
 <div class="row">
 <div class='col col-md-12 text-center text-white'><h2>Welcome to InAcres Central Database</h2>
 <h3> Lets Farm Together</h3></div>
-</div></br>
+</div>
 {% if user.is_authenticated %}
 <a href='{% url 'app:sites' %}' type="button" class="btn btn-warning text-success d-grid col-6 mx-auto" ><b> View Sites </b></a>
 {% else %}
