@@ -6,16 +6,20 @@
 .inacres{
    /* background: url(https://cdn.pixabay.com/photo/2017/08/04/09/39/indian-cow-2579534_960_720.jpg);*/
    background: url({% static 'app/img/farm-09.jpg' %});
-    background-repeat: no-repeat;
-  background-size: 100% 100%;
-  /* padding: 250px; */
+   height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
     
 }
 </style>
 <div class='container'>
 <img src='{% static 'app/img/newlogo.png' %}' class='img-fluid col col-sm-12' alt='inacres image'></img>
 
-<div class='bg-image' style="background-image: url({% static 'app/img/farm-09.jpg' %}); height: 100vh;">
+<div class='inacres'>
 <div class="row">
 <div class='col col-md-12 text-center text-success'><h2>Welcome to InAcres Central Database</h2>
 <h3> Lets Farm Together</h3></div>
