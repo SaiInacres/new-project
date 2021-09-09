@@ -59,7 +59,7 @@
         <h5 class="text-success"><b><u>Document Photos :</u></b></h5></br>
         {% for objects in query1 %} 
         <a target="_blank" href="{{ objects.document_photos.url }}">
-            <img src="{{ objects.media_url }}{{ objects.document_photos.url }}" alt='documents photo' class=" border border-3 border-dark h-25 w-50">
+            <img src="{{ objects.media_url }}{{ objects.document_photos.url }}" alt='documents photo' class=" border border-3 border-dark h-75 w-50">
         </a> 
         {% endfor %}
       </div>  
