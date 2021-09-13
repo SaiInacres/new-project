@@ -59,7 +59,7 @@ class PostImage(models.Model):
 class Extent_sites(models.Model):
     post = models.ForeignKey(Document_details, default=None, on_delete=models.CASCADE)
     variable_plot = models.CharField(max_length=50, blank=True, null=True)
-    checked = models.models.BooleanField(default=False)
+    checked = models.BooleanField(default=False)
 
     def __str__(self):
         return self.variable
