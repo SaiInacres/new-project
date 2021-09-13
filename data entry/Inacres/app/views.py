@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import NewRegistrationForm, NewProjectForm, DocumentForm, DocumentImageForm
 #from django.views.generic import ListView
-from app.models import New_project, New_registration, Document_details, PostImage
+from app.models import New_project, New_registration, Document_details, PostImage, Extent_sites
 from django.conf import settings
 from django.db.models import Q
 
@@ -164,6 +164,7 @@ def document_register(request):
     if request.method =='POST':
         form = DocumentImageForm(request.POST or None, request.FILES)
         images = request.FILES.getlist('document_photos')
+        variable = Extent_sites.objects.get(checked=False)
         if form.is_valid():
             project_name = form.cleaned_data.get('project_name')
             plot_no = form.cleaned_data.get('plot_no')
@@ -206,6 +207,9 @@ def document_register(request):
             for i in images:
                 data = PostImage(post=object, document_photos=i)
                 data.save()
+            variable.post = object
+            variable.checked = True
+            variable.save()
             messages.success(request, 'Thank you! Plot Account Was Successfully Created.',
                              extra_tags='alert alert-success')           
         else:
