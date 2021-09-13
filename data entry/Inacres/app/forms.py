@@ -6,7 +6,7 @@ class NewRegistrationForm(forms.ModelForm):
 
     class Meta:
        model = New_registration
-       fields = ('project_name', 'plot_no', 'first_name', 'last_name', 'mail_id', 'mobile_no', 'survey_no', 'address', 'mandal', 'city', 'district', 'state',  'pincode')
+       fields = ('project_name', 'plot_no', 'first_name', 'last_name', 'mail_id', 'mobile_no', 'survey_no', 'land_extent', 'address', 'city', 'district', 'state',  'pincode')
 
 class NewProjectForm(forms.ModelForm):
 

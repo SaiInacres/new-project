@@ -19,8 +19,8 @@
           {% for object in query %}
             <b><h3 class='text-success'>User Personal Details: </h3></b></br>
             <b><h5 class="text-success">Name :</h5><h4> {{ object.plot_no.first_name }} {{ object.plot_no.last_name }}</h4></b>
-            <h5 class="text-success">Address : </h5><h4> {{ object.plot_no.address }}</h4>
-            <h5 class="text-success">Mandal : </h5><h4>{{ object.plot_no.mandal }}</h4>
+            <h5 class="text-success">Land Extent : </h5><h4> {{ object.plot_no.land_extent }}</h4>
+            <h5 class="text-success">Address : </h5><h4>{{ object.plot_no.address }}</h4>
             <h5 class="text-success">City : </h5><h4> {{ object.plot_no.city }}</h4>
             <h5 class="text-success">District : </h5><h4>{{ object.plot_no.district }}</h4>
             <h5 class="text-success">State : </h5><h4> {{ object.plot_no.state }}</h4>
