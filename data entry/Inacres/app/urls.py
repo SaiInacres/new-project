@@ -25,5 +25,6 @@ urlpatterns = [
     path('documentregister/', views.document_register, name='documentregister'),
     path('ajax/load-plot_nos/', views.load_plot_no, name='ajax_load_plot_no'), 
     path('search/', views.user_details, name='search'),
+    path('plots_available/',views.plots_available, name='plotsavailable'),
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

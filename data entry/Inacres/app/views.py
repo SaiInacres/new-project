@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import NewRegistrationForm, NewProjectForm, DocumentForm, DocumentImageForm
 #from django.views.generic import ListView
-from app.models import New_project, New_registration, Document_details, PostImage, Extent_sites
+from app.models import New_project, New_registration, Document_details, PostImage, Extent_sites, Plots
 from django.conf import settings
 from django.db.models import Q
 
@@ -223,3 +223,8 @@ def load_plot_no(request):
     project_name_id = request.GET.get('projectId')
     plot_nos = New_registration.objects.raw('select * from app_new_registration where app_new_registration.project_name_id = %s', [project_name_id])
     return render(request, 'app/dropdown_list_options.html',  {'plot_nos': plot_nos})
+
+def plots_available(request):
+    query = Plots.objects.all()
+    subquery =  Extent_sites.objects.filter(post__plot_no__icontains=query)
+    return render(request, 'app/open_plots_available.html', {'query': query, 'subquery': subquery})
