@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block title %}Plots Available{% endblock %}
+{% block content %}
+
+{% for item in query %}
+<div class="row">
+<div class="table">
+{% if subquery.post.plot_no == item.plots %}
+<div class="tr col-sm-12 bg-danger">
+{{ item.plots }}
+</div>
+{% else %}
+<div class='tr col-sm-12'>
+{{ item.plots }}
+</div>
+{% endif %}
+</div>
+</div>
+{% endfor %}
+{% endblock %}
