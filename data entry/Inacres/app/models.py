@@ -17,7 +17,7 @@ class New_registration(models.Model):
     )
    
     project_name = models.ForeignKey(New_project, on_delete=models.CASCADE)
-    plot_no = models.CharField(max_length=20, unique=True, blank=False, null=False)
+    plot_no = models.CharField(max_length=20, unique=False, blank=False, null=False)
     first_name = models.CharField(max_length=100, blank=False, null=False)
     last_name = models.CharField(max_length=100, blank=False, null=False)
     mail_id = models.EmailField(max_length=100, blank=False, null=False)
