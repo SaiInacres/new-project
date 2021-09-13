@@ -62,4 +62,4 @@ class Extent_sites(models.Model):
     checked = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.variable
+        return self.post
