@@ -226,5 +226,5 @@ def load_plot_no(request):
 
 def plots_available(request):
     query = Plots.objects.all()
-    subquery =  Extent_sites.objects.filter(post__plot_no__icontains=query)
+    subquery =  Extent_sites.objects.filter(post__plot_no__plot_no__icontains=query)
     return render(request, 'app/open_plots_available.html', {'query': query, 'subquery': subquery})
