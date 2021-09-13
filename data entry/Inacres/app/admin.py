@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import New_registration, New_project, Document_details, PostImage, Extent_sites
+from .models import New_registration, New_project, Document_details, PostImage, Extent_sites, Plots
 # Register your models here.
 
 admin.site.register(New_registration)
@@ -7,6 +7,7 @@ admin.site.register(New_project)
 admin.site.register(Document_details)
 admin.site.register(PostImage)
 admin.site.register(Extent_sites)
+admin.site.register(Plots)
 
 '''
 class PostImageAdmin(admin.StackedInline):

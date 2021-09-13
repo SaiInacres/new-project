@@ -63,3 +63,9 @@ class Extent_sites(models.Model):
 
     def __str__(self):
         return str(self.post.plot_no)
+
+class Plots(models.Model):
+    plots = models.CharField(max_length=50)
+
+    def __str__(self):
+        return str(self.plots)
