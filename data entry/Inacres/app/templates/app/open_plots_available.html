@@ -9,12 +9,10 @@
 <div class='col-md-8'>
 <table class='table table-bordered'>
 {% for item in query %}
-{% if subquery %}
 {% if subquery.post.plot_no == item.plots %}
 <tr class='table-danger'>
 {{ item.plots }}
 </tr>
-{% endif %}
 {% else %}
 <tr class='table-success'>
 {{ item.plots }}
