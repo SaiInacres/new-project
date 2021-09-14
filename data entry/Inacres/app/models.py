@@ -64,7 +64,7 @@ class Plots(models.Model):
 
 class Extent_sites(models.Model):
     post = models.ForeignKey(Document_details, default=None, on_delete=models.CASCADE)
-    variable_plot = models.ForeignKey(Plots, default=None, on_delete=models.SET_NULL)
+    variable_plot = models.ForeignKey(Plots, default=None, null=True, on_delete=models.SET_NULL)
     checked = models.BooleanField(default=False)
 
     def __str__(self):
