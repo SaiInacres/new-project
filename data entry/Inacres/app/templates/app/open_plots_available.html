@@ -12,11 +12,11 @@
 {% if subquery.checked == True %}
 
 <tr class='table-danger'>
-{{ subquery.item.plots }}
+{{ item.plots }}
 </tr>
 {% else %}
 <tr class='table-success'>
-{{ subquery.item.plots }}
+{{ item.plots }}
 </tr>
 {% endif %}
 </table>
@@ -24,5 +24,6 @@
 {% endfor %}
 </div>
 <div class=col-md-2></div>
+
 </div>
 {% endblock %}

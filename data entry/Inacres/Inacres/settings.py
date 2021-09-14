@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1^6$==0c^)g_72wa-ie=@(l#_d(1w)67-!6myxmb*4ibr4r!kt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =  False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'inacresdatabase.in', "www.inacresdatabase.in", '143.110.176.246']
 
@@ -95,9 +95,9 @@ if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'myproject',
-            'USER': 'inacres',
-            'PASSWORD': 'inacresdb',
+            'NAME': 'inacresdb',
+            'USER': 'postgres',
+            'PASSWORD': 'phani@1997',
             'HOST': 'localhost',
             'PORT': '',
         }
