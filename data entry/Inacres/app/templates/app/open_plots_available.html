@@ -3,10 +3,9 @@
 {% load bootstrap5 %}
 {% block title %}Plots Available{% endblock %}
 {% block content %}
-
-{% for item in query %}
 <div class="row">
 <div class="table">
+{% for item in query|rows: "3" %}
 {% if subquery.post.plot_no == item.plots %}
 <div class="tr bg-danger">
 {{ item.plots }}
@@ -16,7 +15,8 @@
 {{ item.plots }}
 </div>
 {% endif %}
-</div>
-</div>
+
 {% endfor %}
+</div>
+</div>
 {% endblock %}
