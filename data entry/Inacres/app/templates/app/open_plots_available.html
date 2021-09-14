@@ -8,17 +8,19 @@
 <div class='col-md-2'></div>
 <div class='col-md-8'>
 {% for item in query %}
-{% if subquery.checked == True %}
 <table class='table table-bordered'>
+{% if subquery.checked == True %}
+
 <tr class='table-danger'>
-{{ item.plots }}
+{{ subquery.item.plots }}
 </tr>
 {% else %}
 <tr class='table-success'>
-{{ item.plots }}
+{{ subquery.item.plots }}
 </tr>
-</table>
 {% endif %}
+</table>
+
 {% endfor %}
 </div>
 <div class=col-md-2></div>
