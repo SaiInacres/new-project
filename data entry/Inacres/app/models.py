@@ -57,14 +57,14 @@ class PostImage(models.Model):
         return str(self.post.plot_no)
 
 class Plots(models.Model):
-    plots = models.CharField(max_length=50)
+    plots = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return str(self.plots)
 
 class Extent_sites(models.Model):
     post = models.ForeignKey(Document_details, default=None, on_delete=models.CASCADE)
-    variable_plot = models.ForeignKey(Plots, on_delete=models.SET_NULL)
+    variable_plot = models.ForeignKey(Plots, default=None, on_delete=models.SET_NULL)
     checked = models.BooleanField(default=False)
 
     def __str__(self):
