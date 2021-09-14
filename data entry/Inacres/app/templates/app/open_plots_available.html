@@ -8,7 +8,7 @@
 <div class='col-md-2'></div>
 <div class='col-md-8'>
 {% for item in query %}
-{% if subquery.post.plot_no == item.plots %}
+{% if subquery.checked == True %}
 <table class='table table-bordered'>
 <tr class='table-danger'>
 {{ item.plots }}
