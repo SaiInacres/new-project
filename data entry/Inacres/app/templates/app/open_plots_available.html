@@ -10,7 +10,7 @@
 <table class='table table-bordered'>
 {% for item in query %}
 {% if subquery %}
-{% if subquery.post == item.plots %}
+{% if subquery.post.plot_no == item.plots %}
 <tr class='table-danger'>
 {{ item.plots }}
 </tr>
