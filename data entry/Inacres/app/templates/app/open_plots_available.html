@@ -7,9 +7,9 @@
 <div class="row">
 <div class='col-md-2'></div>
 <div class='col-md-8'>
-<table class='table table-bordered'>
 {% for item in query %}
 {% if subquery.post.plot_no == item.plots %}
+<table class='table table-bordered'>
 <tr class='table-danger'>
 {{ item.plots }}
 </tr>
@@ -17,9 +17,10 @@
 <tr class='table-success'>
 {{ item.plots }}
 </tr>
+</table>
 {% endif %}
 {% endfor %}
-</table></div>
+</div>
 <div class=col-md-2></div>
 </div>
 {% endblock %}
