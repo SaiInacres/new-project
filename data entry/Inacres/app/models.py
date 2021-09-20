@@ -1,6 +1,9 @@
 from django.core import validators
 from django.db import models
 from django.core.validators import MaxLengthValidator, MinLengthValidator
+from django.urls import reverse
+
+
 
 
 # Create your models here.
@@ -38,8 +41,8 @@ class New_registration(models.Model):
 class Document_details(models.Model):
     project_name = models.ForeignKey(New_project, on_delete=models.CASCADE)
     plot_no = models.ForeignKey(New_registration, on_delete=models.CASCADE, related_name='plot_nos')
-    katha_no = models.CharField(max_length=50, blank=False, null=False, unique=True, help_text='Enter Katha Number..')
-    new_passbook_no = models.CharField(max_length=50, blank=False, null=False, unique=True, help_text='Enter passbook Number..')
+    katha_no = models.CharField(max_length=50, blank=False, null=False, unique=False, help_text='Enter Katha Number..')
+    new_passbook_no = models.CharField(max_length=50, blank=False, null=False, unique=False, help_text='Enter passbook Number..')
     document_no = models.CharField(max_length=100, blank=False, null=False, unique=True, help_text='Enter Extent document number..')
     aadhar_no = models.BigIntegerField( unique=True, help_text='Enter Aadhar Number..')
     pass_photo = models.ImageField(upload_to='app/',null=False, blank=False, editable=True,  help_text='Upload Passport size Image..')
@@ -49,6 +52,10 @@ class Document_details(models.Model):
     def __str__(self):
         return self.project_name.project_name
 
+        
+    
+    
+
 class PostImage(models.Model):
     post = models.ForeignKey(Document_details, default=None, on_delete=models.CASCADE)
     document_photos = models.FileField(upload_to = 'app/')
@@ -56,17 +63,19 @@ class PostImage(models.Model):
     def __str__(self):
         return str(self.post.plot_no)
 
-class Plots(models.Model):
-    plots = models.CharField(max_length=50, blank=True, null=True)
-    project = models.ForeignKey(New_project, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.plots)
-
+    
 class Extent_sites(models.Model):
     post = models.ForeignKey(Document_details, default=None, on_delete=models.CASCADE)
-    variable_plot = models.ForeignKey(Plots, default=None, null=True, on_delete=models.SET_NULL)
+    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
+    variable_plot = models.CharField(max_length=50, blank=True, null=True)
     checked = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.post.plot_no)
+        return str(self.post.project_name)
+
+class Plots(models.Model):
+    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
+    plot = models.CharField(max_length=50, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.project.project_name)

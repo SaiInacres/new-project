@@ -4,24 +4,51 @@
 {% load bootstrap5 %}
 {% block title %}Plots Available{% endblock %}
 {% block content %}
+
+<style>
+table {
+    display: table;
+}
+table tr {
+    display: table-cell; 
+}
+table tr td {
+    display: block;
+}
+</style>
+{% if items.post == "VIKARABAD CSA" %}
+  {% if items.checked == True %}
+   {% endif %}  
+  {% endif %}
 <div class="row">
 <div class='col-md-2'></div>
 <div class='col-md-8'>
-{% for item in query %}
-<table class='table table-bordered'>
-{% if subquery.checked == True %}
 
-<tr class='table-danger'>
-{{ item.plots }}
-</tr>
-{% else %}
-<tr class='table-success'>
-{{ item.plots }}
-</tr>
-{% endif %}
+<table class="table table-bordered">
+  <tbody>
+  
+
+    {% for item in query %}
+      {% if item.project.project_name == "VIKARABAD CSA" %} 
+      <tr>  
+      {% for items in subquery.all %}
+        {% if item.plot == items.variable_plot and items.checked %}
+          <td class="bg-danger">{{ item.plot }}</td>
+        {% else %}
+          <td class="bg-success">{{ item.plot }}</td>
+        {% endif %}
+      {% endfor %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+    
+    
+  
+  </tbody>
 </table>
 
-{% endfor %}
+
+
 </div>
 <div class=col-md-2></div>
 

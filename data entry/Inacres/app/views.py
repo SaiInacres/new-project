@@ -1,9 +1,10 @@
 #from django.contrib.auth import authenticate
 from django.db import connection
+from django.db import models
 from django.db.models import query
 from django.db.models.base import Model
 from django.db.models.query import QuerySet
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 #from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -12,7 +13,9 @@ from .forms import NewRegistrationForm, NewProjectForm, DocumentForm, DocumentIm
 from app.models import New_project, New_registration, Document_details, PostImage, Extent_sites, Plots
 from django.conf import settings
 from django.db.models import Q
-
+from django.views.generic import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+import os
 
 # Create your views here.
 def index(request):
@@ -174,23 +177,7 @@ def document_register(request):
             pass_photo = form.cleaned_data.get('pass_photo')
             passbook_photo = form.cleaned_data.get('passbook_photo')
             Note = form.cleaned_data.get('Note')
-            """
-            object =Document_details.objects.create(
-
-                project_name=project_name,
-                plot_no=plot_no,
-                katha_no=katha_no,
-                new_passbook_no=new_passbook_no,                  
-                document_no=document_no,
-                aadhar_no=aadhar_no,
-                pass_photo=pass_photo,
-                passbook_photo=passbook_photo,
-                Note=Note,     
-            )
-            for i in images:
-                PostImage.objects.create(post=object, document_photos=i)
-                """
-
+           
             object = Document_details(
                 project_name=project_name,
                 plot_no=plot_no,
@@ -206,7 +193,7 @@ def document_register(request):
             for i in images:
                 data = PostImage(post=object, document_photos=i)
                 data.save()
-            variable = Extent_sites(post=object, checked = True)
+            variable = Extent_sites(post=object, project=object.project_name,variable_plot=object.plot_no, checked = True)
             variable.save()
             messages.success(request, 'Thank you! Plot Account Was Successfully Created.',
                              extra_tags='alert alert-success')           
@@ -219,12 +206,54 @@ def document_register(request):
         form = DocumentImageForm
     return render(request, 'app/documents_register.html', {'form': form})
 
+"""
+@login_required
+def documentsUpdateView(request, pk):
+    form = Document_details.objects.get(id=pk)
+    form = DocumentUpdateForm( instance=form)
+    if request.method == "POST":
+        form = DocumentUpdateForm(request.POST or None, request.FILES, instance=form)
+        if form.is_valid():
+            if len(request.FILES) != 0:
+                if len(form.pass_photo) > 0:
+                    os.remove(form.pass_photo.path)
+                if len(form.passbook_photo) > 0:
+                    os.remove(form.passbook_photo.path)
+                if len(form.document_photos) > 0:
+                    os.remove(form.document_photos.path)
+                form.pass_photo = request.FILES['pass_photo']
+                form.passbook_photo = request.FILES['passbook_photo']
+                
+            form.project_name = request.POST.get('project_name')
+            form.plot_no = request.POST.get('plot_no')
+            form.katha_no = request.POST.get('katha_no')
+            form.new_passbook_no = request.POST.get('new_passbook_no')
+            form.document_no = request.POST.get('document_no')
+            form.aadhar_no = request.POST.get('aadhar_no')
+            form.Note = request.POST.get('Note')
+            form.save(['katha_no'], ['new_passbook_no'], ['Note'])
+            messages.success(request, 'Thank you! Plot Account Was Successfully Updated.',
+                                extra_tags='alert alert-success')
+        else:
+            print(form.errors)
+            messages.warning(request, 'Sorry, Something went wrong!', extra_tags='alert alert-warning')
+
+            
+                 
+    return render(request, 'app/documents_register.html',  {'form': form})
+
+    
+"""    
+
+
 def load_plot_no(request):
     project_name_id = request.GET.get('projectId')
     plot_nos = New_registration.objects.raw('select * from app_new_registration where app_new_registration.project_name_id = %s', [project_name_id])
     return render(request, 'app/dropdown_list_options.html',  {'plot_nos': plot_nos})
 
 def plots_available(request):
+    
     query = Plots.objects.all()
-    subquery =  Extent_sites.objects.filter(post__plot_no__plot_no__icontains=query)
+    subquery = Extent_sites.objects.all()
+    
     return render(request, 'app/open_plots_available.html', {'query': query, 'subquery': subquery})

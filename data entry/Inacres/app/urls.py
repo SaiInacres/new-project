@@ -3,12 +3,14 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.urls.conf import include
 
 
 
 app_name = 'app'
 
 urlpatterns = [
+    #path('tinymce/', include('tinymce.urls')),
     path('', views.index, name='index'),
     #path('login/', views.login_request, name='login'),
     path('login/', auth_views.LoginView.as_view(template_name='app/login.html'), name='login'),
@@ -23,6 +25,7 @@ urlpatterns = [
     path('user_details/maddur/', views.user_details_maddur, name='userdetailsmaddur'),
     path('details/<int:pk>', views.plot_details, name='details'),
     path('documentregister/', views.document_register, name='documentregister'),
+    #path('edit/<int:pk>', views.documentsUpdateView, name='update'),
     path('ajax/load-plot_nos/', views.load_plot_no, name='ajax_load_plot_no'), 
     path('search/', views.user_details, name='search'),
     path('plots_available/',views.plots_available, name='plotsavailable'),

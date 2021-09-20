@@ -15,7 +15,12 @@
 {% endif %}</br>
 <div class='row'>
 <div class='container col-md-6 border border-2 border-success rounded-3'></br></br>
-<h3 class='text-success text-center'><b>New Plot User Registration Form</b></h3>
+<h3 class='text-success text-center'><b>
+{% if not form.instance.pk %}
+New Plot User Registration Form
+{% else %}
+update form
+{% endif %}</b></h3>
 <form method='POST' action="{% url 'app:documentregister' %}" id="DocumentForm" data-plotnos-url="{% url 'app:ajax_load_plot_no' %}" enctype="multipart/form-data"  >
 {% csrf_token %}
 <b>{{ form|crispy }}</b>

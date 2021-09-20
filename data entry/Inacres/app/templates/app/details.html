@@ -18,23 +18,23 @@
         <div class='col-md-4'>
           {% for object in query %}
             <b><h3 class='text-success'>User Personal Details: </h3></b></br>
-            <b><h5 class="text-black-50">Name : {{ object.plot_no.first_name }} {{ object.plot_no.last_name }}</h5></b>
-            <h5 class="text-black-50">Land Extent :  {{ object.plot_no.land_extent }}</h5>
-            <h5 class="text-black-50">Address : {{ object.plot_no.address }}</h5>
-            <h5 class="text-black-50">City :  {{ object.plot_no.city }}</h5>
-            <h5 class="text-black-50">District :{{ object.plot_no.district }}</h5>
-            <h5 class="text-black-50">State :  {{ object.plot_no.state }}</h5>
-            <h5 class="text-black-50">Zip :  {{ object.plot_no.pincode }}</h5>
+            <b><h5 class="text-black-50">Name : {{ object.plot_no.first_name }} {{ object.plot_no.last_name }}</h5></b></br>
+            <h5 class="text-black-50"><b>Land Extent :  </b>{{ object.plot_no.land_extent }}</h5></br>
+            <h5 class="text-black-50"><b>Address : </b>{{ object.plot_no.address }}</h5></br>
+            <h5 class="text-black-50"><b>City :  </b>{{ object.plot_no.city }}</h5></br>
+            <h5 class="text-black-50"><b>District : </b>{{ object.plot_no.district }}</h5></br>
+            <h5 class="text-black-50"><b>State :  </b>{{ object.plot_no.state }}</h5></br>
+            <h5 class="text-black-50"><b>Zip :  </b>{{ object.plot_no.pincode }}</h5></br>
           {% endfor %}
         </div>
       <div class='col-md-4'>
           {% for object in query %}
           <b><h3 class='text-success'>User Plot Details:</h3></b></br>
-          <h5 class="text-black-50">Aadhar No : {{ object.aadhar_no }}</h5>
-          <h5 class="text-black-50">Katha No : {{ object.katha_no }}</h5>
-          <h5 class="text-black-50">Passbook No : {{ object.new_passbook_no }}</h5>
-          <h5 class="text-black-50">Document No : {{ object.document_no }}</h5>
-          <h5 class="text-danger"><u>Note :</u> {{ object.Note }}</h5>
+          <h5 class="text-black-50"><b>Aadhar No : </b>{{ object.aadhar_no }}</h5></br>
+          <h5 class="text-black-50"><b>Katha No : </b>{{ object.katha_no }}</h5></br>
+          <h5 class="text-black-50"><b>Passbook No : </b>{{ object.new_passbook_no }}</h5></br>
+          <h5 class="text-black-50"><b>Document No : </b>{{ object.document_no }}</h5></br>
+          <h5 class="text-danger"><u>Note :</u> {{ object.Note }}</h5></br>
           {% endfor %}
       </div>
       

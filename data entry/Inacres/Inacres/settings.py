@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'bootstrap5',
+
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -167,3 +168,4 @@ LOGIN_URL = 'app:login'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 ADMIN_MEDIA_PREFIX = 'media/' 
+
