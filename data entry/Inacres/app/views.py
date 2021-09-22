@@ -265,7 +265,7 @@ from django.shortcuts import HttpResponse
 from django.views.static import serve
 from django.conf import settings
 
-"""
+
 @login_required
 def protected_serve(request, pk, path, document_root=None):
     try:
@@ -277,4 +277,3 @@ def protected_serve(request, pk, path, document_root=None):
             return serve(request, path, document_root)
     except ObjectDoesNotExist:
         return HttpResponse("Sorry you don't have permission to access this file")
-"""
