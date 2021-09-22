@@ -260,26 +260,19 @@ def plots_available(request):
     return render(request, 'app/open_plots_available.html', {'query': query, 'subquery': subquery})
 
 
-from django.http.response import FileResponse
-from django.http import HttpResponseForbidden
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import HttpResponse
+from django.views.static import serve
+from django.conf import settings
 
 @login_required
-def media_access(request, path):
-    access_granted = False
-    user = request.user
-    if user.is_authenticated():
-        if user.is_superuser and user.is_staff:
-            access_granted = True
-        else:
-            access_granted = False
-        
-        doc = user.document_photos
-        path = f"app/{path}"
-        if path == doc:
-            access_granted = True
-        
-    if access_granted:
-        response = FileResponse(path)
-        return response
-    else:
-        return HttpResponseForbidden("Not authorized to access this media.")
+def protected_serve(request, pk, path, document_root=None):
+    try:
+        query = Document_details.objects.filter(pk=pk)
+        obj = PostImage.objects.filter(post__in=query)
+        obj_image_url = obj.document_photos.url
+        correct_image_url = obj_image_url.replace("/media/", "")
+        if correct_image_url == path:
+            return serve(request, path, document_root)
+    except ObjectDoesNotExist:
+        return HttpResponse("Sorry you don't have permission to access this file")
