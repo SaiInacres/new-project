@@ -93,16 +93,26 @@ WSGI_APPLICATION = 'Inacres.wsgi.application'
 #    }
 #}
 if DEBUG:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#            'NAME': 'inacresdb',
+#            'USER': 'postgres',
+#            'PASSWORD': 'phani@1997',
+#            'HOST': 'localhost',
+#            'PORT': '',
+#        }
+#    }
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'inacresdb',
-            'USER': 'postgres',
-            'PASSWORD': 'phani@1997',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'inacres',
+        'PASSWORD': 'inacresdb',
+        'HOST': 'localhost',
+        'PORT': '',
     }
+}
 else:
     DATABASES = {
     'default': {
