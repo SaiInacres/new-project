@@ -7,12 +7,8 @@
 img {
   pointer-events: none;
 }
-.show-img {
-  padding: 50px;
-  transition: transform .2s;
-  margin: 0 auto;
-}
-.show-img:hover {
+
+.row > a > img:hover {
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1.5);
@@ -55,13 +51,13 @@ img {
       <div class='col-md-4'>
           {% for object in query %}
               <h5 class="text-success"><b><u>Pass Photo :</u></b></br>
-              <a href=''>
+              <a href='#' target="_blank">
                   <img src="{{ object.media_url }}{{ object.pass_photo.url }}" class='show-img col-md-3 img-fluid border border-dark h-25 w-50' alt='aadhar photo'>
               </a>
               </h5>
             </br>
               <h5 class="text-success"><b><u>Passbook photo :</u></b></br>  
-              <a href=''>                    
+              <a href='#' target="_blank">                    
                   <img src="{{ object.media_url }}{{ object.passbook_photo.url }}" alt='passbook photo' class='show-img col-md-3 border border-dark h-25 w-50 img-fluid'>                
               </a>
               </h5>
@@ -84,7 +80,7 @@ img {
 <h5 class="text-success"><b><u>Document Photos :</u></b></h5></br>
 <div class='row'>
 {% for objects in query1 %}
-<a href=''>
+<a href='' target="_blank">
   <img class="show-img  border border-3 border-dark h-75 w-50" src="{{ objects.media_url }}{{ objects.document_photos.url }}" style="width:255px;">
   </a>
 {% endfor %}
