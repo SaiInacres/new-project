@@ -30,6 +30,6 @@ urlpatterns = [
     path('ajax/load-plot_nos/', views.load_plot_no, name='ajax_load_plot_no'), 
     path('search/', views.user_details, name='search'),
     path('plots_available/',views.plots_available, name='plotsavailable'),
-    url(r'^{}(?P<path>.*)$'.format(settings.MEDIA_URL[1:]), views.protected_serve, {'file_root': settings.MEDIA_ROOT}),
+    #url(r'^{}(?P<path>.*)$'.format(settings.MEDIA_URL[1:]), views.protected_serve, {'file_root': settings.MEDIA_ROOT}),
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
