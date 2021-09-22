@@ -45,13 +45,13 @@ img {
       <div class='col-md-4'>
           {% for object in query %}
               <h5 class="text-success"><b><u>Pass Photo :</u></b></br>
-                <a href="{{ object.pass_photo.url }}" target="_blank">
+                <a href="{{ object.pass_photo.url }}" target="_blank" oncontextmenu="return false;">
                   <img src="{{ object.media_url }}{{ object.pass_photo.url }}" class='col-md-3 img-fluid border border-dark h-25 w-50' alt='aadhar photo'>
                 </a>
               </h5>
             </br>
               <h5 class="text-success"><b><u>Passbook photo :</u></b></br>
-                <a href="{{ object.passbook_photo.url }}" target="_blank">
+                <a href="{{ object.passbook_photo.url }}" target="_blank" oncontextmenu="return false;">
                   <img src="{{ object.media_url }}{{ object.passbook_photo.url }}" alt='passbook photo' class='col-md-3 border border-dark h-25 w-50 img-fluid'>
                 </a>
               </h5>
@@ -62,7 +62,7 @@ img {
       <div class='row'>
         <h5 class="text-success"><b><u>Document Photos :</u></b></h5></br>
         {% for objects in query1 %} 
-        <a target="_blank" href="{{ objects.document_photos.url }}">
+        <a target="_blank" href="{{ objects.document_photos.url }}" oncontextmenu="return false;">
             <img src="{{ objects.media_url }}{{ objects.document_photos.url }}" alt='documents photo' class=" border border-3 border-dark h-75 w-50">
         </a> 
         {% endfor %}
