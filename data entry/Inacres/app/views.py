@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models import query
 from django.db.models.base import Model
 from django.db.models.query import QuerySet
+from django.http import response
 from django.shortcuts import get_object_or_404, redirect, render
 #from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -257,3 +258,23 @@ def plots_available(request):
     subquery = Extent_sites.objects.all()
     
     return render(request, 'app/open_plots_available.html', {'query': query, 'subquery': subquery})
+
+
+from django.http.response import FileResponse
+from django.http import HttpResponseForbidden
+
+def media_access(request, path):
+    access_granted = False
+    user = request.user
+    if user.is_authenticated():
+        if user.is_superuser and user.is_staff:
+            access_granted = True
+        else:
+            access_granted = False
+        path = f"app/{path}"
+        
+    if access_granted:
+        response = FileResponse(path)
+        return response
+    else:
+        return HttpResponseForbidden("Not authorized to access this media.")

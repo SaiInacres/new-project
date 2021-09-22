@@ -1,3 +1,4 @@
+from django.forms.widgets import Media
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
@@ -29,5 +30,6 @@ urlpatterns = [
     path('ajax/load-plot_nos/', views.load_plot_no, name='ajax_load_plot_no'), 
     path('search/', views.user_details, name='search'),
     path('plots_available/',views.plots_available, name='plotsavailable'),
+    path('media/app/<str:path>', views.media_access, name='media'),
    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
