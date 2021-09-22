@@ -79,7 +79,7 @@ img {
 
 <!-- Grid row -->
 <div class="row">
-
+{% for objects in query1 %} 
   <!-- Grid column -->
   <div class="col-lg-4 col-md-12 mb-4">
 
@@ -109,6 +109,16 @@ img {
     </div>
     <a><img class="img-fluid z-depth-1" src="{{ objects.media_url }}" alt="video"
         data-toggle="modal" data-target="#modal1"></a>
+    </div>
+    {% endfor %}
+    </div>
+
+
+
+
+
+
+
 
 </div>
 </br>
