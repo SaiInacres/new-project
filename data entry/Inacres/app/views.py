@@ -263,6 +263,7 @@ def plots_available(request):
 from django.http.response import FileResponse
 from django.http import HttpResponseForbidden
 
+@login_required
 def media_access(request, path):
     access_granted = False
     user = request.user
@@ -271,7 +272,11 @@ def media_access(request, path):
             access_granted = True
         else:
             access_granted = False
+        
+        doc = user.document_photos
         path = f"app/{path}"
+        if path == doc:
+            access_granted = True
         
     if access_granted:
         response = FileResponse(path)
