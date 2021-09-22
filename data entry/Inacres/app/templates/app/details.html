@@ -45,35 +45,15 @@ img {
       <div class='col-md-4'>
           {% for object in query %}
               <h5 class="text-success"><b><u>Pass Photo :</u></b></br>
-              <div id="my-modal" class="modal fade" aria-labelledby="my-modalLabel" aria-hidden="true" tabindex="-1" role="dialog">
-              <div class="modal-dialog" data-dismiss="modal">
-                  <div class="modal-content"  >              
-                      <div class="modal-body">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                          <img src="" class="gallery" style="width: 100%; height:100%">
-                        </div> 
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              
                 
                   <img src="{{ object.media_url }}{{ object.pass_photo.url }}" class='show-img col-md-3 img-fluid border border-dark h-25 w-50' alt='aadhar photo'>
                 
               </h5>
             </br>
               <h5 class="text-success"><b><u>Passbook photo :</u></b></br>
-              <div id="my-modal" class="modal fade" aria-labelledby="my-modalLabel" aria-hidden="true" tabindex="-1" role="dialog">
-                <div class="modal-dialog" data-dismiss="modal">
-                  <div class="modal-content"  >              
-                    <div class="modal-body">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                      <img src="" class="gallery" style="width: 100%; height:100%">
-                    </div> 
-                  </div>
-                </div>
-              </div>
             </div>
-                
+              
                   <img src="{{ object.media_url }}{{ object.passbook_photo.url }}" alt='passbook photo' class='show-img col-md-3 border border-dark h-25 w-50 img-fluid'>
                 
               </h5>
@@ -94,28 +74,11 @@ img {
 
 
 <h5 class="text-success"><b><u>Document Photos :</u></b></h5></br>
-<div id="my-modal" class="modal fade" aria-labelledby="my-modalLabel" aria-hidden="true" tabindex="-1" role="dialog">
-        <div class="modal-dialog" data-dismiss="modal">
-            <div class="modal-content"  >              
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <img src="" class="gallery" style="width: 100%; height:100%">
-                </div> 
-            </div>
-        </div>
-    </div>
-</div>
 <div class='row'>
 {% for objects in query1 %}
   <img class="show-img  border border-3 border-dark h-75 w-50" src="{{ objects.media_url }}{{ objects.document_photos.url }}" style="width:255px;">
 {% endfor %}
 </div>
- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(".show-img").hover(function(){
-            $('.gallery').attr('src', $(this).attr('src'));
-            $('#my-modal').modal('show');
-        });
-    </script>
+
 </br>
 {% endblock %}
