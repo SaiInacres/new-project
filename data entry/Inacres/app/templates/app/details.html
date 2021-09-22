@@ -3,7 +3,11 @@
 {% load bootstrap5 %}
 {% block title %}Plot Details{% endblock %}
 {% block content %}
-
+<style>
+img {
+  pointer-events: none;
+}
+</style>
 {% for project in query %}
   <div class="row">
     <div class="col text-center">
