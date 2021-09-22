@@ -77,15 +77,17 @@ img {
             <div class="modal-content"  >              
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <img src="" class="img-responsive gallery" style="width: 100%; height:100%">
+                    <img src="" class="gallery" style="width: 100%; height:100%">
                 </div> 
             </div>
         </div>
     </div>
 </div>
+<div class='row'>
 {% for objects in query1 %} 
-<img class="show-img" src="{{ objects.media_url }}{{ objects.document_photos.url }}" style="width: 255px;">
+  <img class="show-img  border border-3 border-dark h-75 w-50" src="{{ objects.media_url }}{{ objects.document_photos.url }}" style="width: 255px;">
 {% endfor %}
+</div>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(".show-img").hover(function(){
