@@ -85,7 +85,7 @@ img {
 </div>
 <div class='row'>
 {% for objects in query1 %} 
-  <img class="show-img  border border-3 border-dark h-75 w-50" src="{{ objects.media_url }}{{ objects.document_photos.url }}">
+  <img class="show-img  border border-3 border-dark h-75 w-50" src="{{ objects.media_url }}{{ objects.document_photos.url }}" style="width:255px;">
 {% endfor %}
 </div>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
