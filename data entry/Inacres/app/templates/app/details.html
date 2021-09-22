@@ -58,7 +58,7 @@ img {
           {% endfor %}
       </div>
     </div>
-    
+    <!---
       <div class='row'>
         <h5 class="text-success"><b><u>Document Photos :</u></b></h5></br>
         {% for objects in query1 %} 
@@ -67,59 +67,31 @@ img {
         </a> 
         {% endfor %}
       </div>  
+      ---->
 
 
 
-
-
-
-
-
-
-
-<!-- Grid row -->
-<div class="row">
-{% for objects in query1 %} 
-  <!-- Grid column -->
-  <div class="col-lg-4 col-md-12 mb-4">
-
-    <!--Modal: Name-->
-    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-
-        <!--Content-->
-        <div class="modal-content">
-
-          <!--Body-->
-          <div class="modal-body mb-0 p-0">
-
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <iframe class="embed-responsive-item" src="{{ objects.media_url }}{{ objects.document_photos.url }}"
-                allowfullscreen></iframe>
+<h5 class="text-success"><b><u>Document Photos :</u></b></h5></br>
+<div id="my-modal" class="modal fade" aria-labelledby="my-modalLabel" aria-hidden="true" tabindex="-1" role="dialog">
+        <div class="modal-dialog" data-dismiss="modal">
+            <div class="modal-content"  >              
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <img src="" class="img-responsive gallery" style="width: 100%; height:100%">
+                </div> 
             </div>
-
-          </div>
-            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-          </div>
-
         </div>
-        <!--/.Content-->
-
-      </div>
     </div>
-    <a><img class="img-fluid z-depth-1" src="{{ objects.document_photos.url }}" alt="video"
-        data-toggle="modal" data-target="#modal1"></a>
-    </div>
-    {% endfor %}
-    </div>
-
-
-
-
-
-
-
-
 </div>
+{% for objects in query1 %} 
+<img class="show-img" src="{{ objects.media_url }}{{ objects.document_photos.url }}" style="width: 255px;">
+{% endfor %}
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(".show-img").hover(function(){
+            $('.gallery').attr('src', $(this).attr('src'));
+            $('#my-modal').modal('show');
+        });
+    </script>
 </br>
 {% endblock %}
