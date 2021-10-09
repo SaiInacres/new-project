@@ -11,7 +11,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import NewRegistrationForm, NewProjectForm, DocumentForm, DocumentImageForm
 #from django.views.generic import ListView
-from app.models import New_project, New_registration, Document_details, PostImage
+from app.models import New_project, New_registration, Document_details, PostImage, Plots
 from django.conf import settings
 from django.db.models import Q
 from django.views.generic import UpdateView

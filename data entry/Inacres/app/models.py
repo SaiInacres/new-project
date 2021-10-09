@@ -73,9 +73,9 @@ class PostImage(models.Model):
 #    def __str__(self):
 #        return str(self.post.project_name)
 
-#class Plots(models.Model):
-#    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
-#    plot = models.CharField(max_length=50, blank=True, null=True)
+class Plots(models.Model):
+    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
+    plot = models.CharField(max_length=50, blank=True, null=True)
 
-#    def __str__(self):
-#        return str(self.project.project_name)
+    def __str__(self):
+        return str(self.project.project_name)
