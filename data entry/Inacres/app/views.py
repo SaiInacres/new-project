@@ -248,12 +248,12 @@ def documentsUpdateView(request, pk):
     
 
 
-
+"""
 def load_plot_no(request):
     project_name_id = request.GET.get('projectId')
     plot_nos = New_registration.objects.raw('select * from app_new_registration where app_new_registration.project_name_id = %s', [project_name_id])
     return render(request, 'app/dropdown_list_options.html',  {'plot_nos': plot_nos})
-
+"""
 
 def plots_available(request):
     
