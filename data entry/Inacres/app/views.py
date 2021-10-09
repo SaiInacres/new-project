@@ -253,15 +253,15 @@ def load_plot_no(request):
     project_name_id = request.GET.get('projectId')
     plot_nos = New_registration.objects.raw('select * from app_new_registration where app_new_registration.project_name_id = %s', [project_name_id])
     return render(request, 'app/dropdown_list_options.html',  {'plot_nos': plot_nos})
-"""
+
 
 def plots_available(request):
     
     query = Plots.objects.all()
-    subquery = Extent_sites.objects.all()
     
-    return render(request, 'app/open_plots_available.html', {'query': query, 'subquery': subquery})
-
+    
+    return render(request, 'app/open_plots_available.html', {'query': query,})
+"""
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import HttpResponse
