@@ -246,7 +246,7 @@ def documentsUpdateView(request, pk):
     return render(request, 'app/documents_register.html',  {'form': form})
 
     
-"""    
+
 
 
 def load_plot_no(request):
@@ -254,7 +254,7 @@ def load_plot_no(request):
     plot_nos = New_registration.objects.raw('select * from app_new_registration where app_new_registration.project_name_id = %s', [project_name_id])
     return render(request, 'app/dropdown_list_options.html',  {'plot_nos': plot_nos})
 
-"""
+
 def plots_available(request):
     
     query = Plots.objects.all()

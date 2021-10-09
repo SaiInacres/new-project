@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import New_registration, New_project, Document_details, PostImage, Plots
+from .models import New_registration, New_project, Document_details, PostImage
 # Register your models here.
 
 
@@ -27,4 +27,4 @@ admin.site.register(New_project)
 admin.site.register(Document_details)
 admin.site.register(PostImage)
 #admin.site.register(Extent_sites)
-admin.site.register(Plots)
+#admin.site.register(Plots)

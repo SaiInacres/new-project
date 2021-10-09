@@ -64,18 +64,18 @@ class PostImage(models.Model):
         return str(self.post.plot_no)
 
     
-class Extent_sites(models.Model):
-    post = models.ForeignKey(Document_details, default=None, on_delete=models.CASCADE)
-    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
-    variable_plot = models.CharField(max_length=50, blank=True, null=True)
-    checked = models.BooleanField(default=False)
+#class Extent_sites(models.Model):
+#    post = models.ForeignKey(Document_details, default=None, on_delete=models.CASCADE)
+#    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
+#    variable_plot = models.CharField(max_length=50, blank=True, null=True)
+#    checked = models.BooleanField(default=False)
 
-    def __str__(self):
-        return str(self.post.project_name)
+#    def __str__(self):
+#        return str(self.post.project_name)
 
-class Plots(models.Model):
-    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
-    plot = models.CharField(max_length=50, blank=True, null=True)
+#class Plots(models.Model):
+#    project = models.ForeignKey(New_project, null=True, on_delete=models.CASCADE)
+#    plot = models.CharField(max_length=50, blank=True, null=True)
 
-    def __str__(self):
-        return str(self.project.project_name)
+#    def __str__(self):
+#        return str(self.project.project_name)
