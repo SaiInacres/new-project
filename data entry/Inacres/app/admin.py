@@ -3,11 +3,11 @@ from .models import New_registration, New_project, Document_details, PostImage, 
 # Register your models here.
 
 
-
+'''
 class ExtentAdmin(admin.ModelAdmin):
     list_display = ['post', 'variable_plot', 'checked']
 
-'''
+
 class PostImageAdmin(admin.StackedInline):
     model = PostImage
  
@@ -26,5 +26,5 @@ admin.site.register(New_registration)
 admin.site.register(New_project)
 admin.site.register(Document_details)
 admin.site.register(PostImage)
-admin.site.register(Extent_sites, ExtentAdmin)
+admin.site.register(Extent_sites)
 admin.site.register(Plots)

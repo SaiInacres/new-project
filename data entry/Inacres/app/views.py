@@ -194,8 +194,10 @@ def document_register(request):
             for i in images:
                 data = PostImage(post=object, document_photos=i)
                 data.save()
+            """    
             variable = Extent_sites(post=object, project=object.project_name,variable_plot=object.plot_no, checked = True)
             variable.save()
+            """
             messages.success(request, 'Thank you! Plot Account Was Successfully Created.',
                              extra_tags='alert alert-success')           
         else:
@@ -252,6 +254,7 @@ def load_plot_no(request):
     plot_nos = New_registration.objects.raw('select * from app_new_registration where app_new_registration.project_name_id = %s', [project_name_id])
     return render(request, 'app/dropdown_list_options.html',  {'plot_nos': plot_nos})
 
+"""
 def plots_available(request):
     
     query = Plots.objects.all()
@@ -277,3 +280,4 @@ def protected_serve(request, pk, path, document_root=None):
             return serve(request, path, document_root)
     except ObjectDoesNotExist:
         return HttpResponse("Sorry you don't have permission to access this file")
+"""
